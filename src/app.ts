@@ -8,7 +8,7 @@ import { loadEnv, connectDb, disconnectDB } from '@/config';
 loadEnv();
 
 import { handleApplicationErrors } from '@/middlewares';
-import { usersRouter, authenticationRouter, eventsRouter, enrollmentsRouter, ticketsRouter } from '@/routers';
+import { usersRouter, authenticationRouter, eventsRouter, enrollmentsRouter, ticketsRouter, paymentsRouter } from '@/routers';
 
 const app = express();
 app
@@ -16,6 +16,7 @@ app
   .use(express.json())
   .get('/health', (_req, res) => res.send('OK!'))
   .use("/tickets", ticketsRouter)
+  .use("/payments", paymentsRouter)
   .use('/users', usersRouter)
   .use('/auth', authenticationRouter)
   .use('/event', eventsRouter)
