@@ -9,11 +9,11 @@ export async function getPaymentByTicketId(req: AuthenticatedRequest, res: Respo
     
     try{
         if(!ticketId) {
-            return res.status(httpStatus.UNAUTHORIZED).send("Ticket not found.")
+            return res.status(httpStatus.BAD_REQUEST).send("Ticket not found.")
         }
 
         const payment = await paymentsService.getPaymentByTicketId(userId, ticketId)
-        if(!payment) return res.status(httpStatus.UNAUTHORIZED).send("Payment not made.")
+        if(!payment) return res.status(httpStatus.NOT_FOUND).send("Payment not made.")
 
         return res.status(httpStatus.OK).send(payment)
     }catch(error){
@@ -31,10 +31,10 @@ export async function paymentProcess(req: AuthenticatedRequest, res: Response){
 
     try{
         if(!ticketId){
-            return res.status(httpStatus.UNAUTHORIZED).send("ticket not found")
+            return res.status(httpStatus.BAD_REQUEST).send("ticket not found")
         }
         if(!cardData){
-            return res.status(httpStatus.UNAUTHORIZED).send("cardData not found")
+            return res.status(httpStatus.BAD_REQUEST).send("cardData not found")
         }
 
         const payment = await paymentsService.paymentProcess(ticketId, userId, cardData)
