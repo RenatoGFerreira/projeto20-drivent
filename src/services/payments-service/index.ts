@@ -10,12 +10,12 @@ import ticketsRepository from "@/repositories/tickets-repository";
 async function verifyInfoTickets(ticketId: number, userId: number){
     const ticket = await ticketsRepository.findTicketByEnrollmentId(ticketId)
     if(!ticket){
-        throw notFoundError()
+        throw unauthorizedError()
     }
 
     const enrollment = await enrollmentRepository.findById(ticket.enrollmentId)
     if(!enrollment){
-        throw notFoundError()
+        throw unauthorizedError()
     }
     if(enrollment.userId !== userId) throw unauthorizedError()
 }
