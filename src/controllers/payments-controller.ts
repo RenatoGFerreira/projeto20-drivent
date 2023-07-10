@@ -31,7 +31,7 @@ export async function paymentProcess(req: AuthenticatedRequest, res: Response){
 
     try{
         if(!ticketId){
-            return res.status(httpStatus.NOT_FOUND).send("ticket not found")  // colocar BAD REQUEST httpstatus
+            return res.status(httpStatus.BAD_REQUEST).send("ticket not found")  
         }
         if(!cardData){
             return res.status(httpStatus.BAD_REQUEST).send("cardData not found")
