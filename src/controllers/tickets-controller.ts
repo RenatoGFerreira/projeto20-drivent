@@ -32,7 +32,7 @@ export async function createTicket(req: AuthenticatedRequest, res: Response) {
     if(!ticketTypeId) return res.status(httpStatus.BAD_REQUEST).send("ticket not found")
     try{
         const ticket = await ticketService.createTicket(userId, ticketTypeId)
-        return res.status(httpStatus.OK).send(ticket)
+        return res.status(httpStatus.CREATED).send(ticket)
         
     }catch(error){
         return res.status(httpStatus.NOT_FOUND).send(error);
