@@ -31,6 +31,7 @@ async function findTicketById(ticketId: number){
         },
         include: {
             Enrollment: true
+            
         }
     })
 }

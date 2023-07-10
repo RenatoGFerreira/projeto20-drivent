@@ -19,5 +19,4 @@ async function findPaymentByTicketId(ticketId:number) {
 }
 
 
-
 export default { findPaymentByTicketId, createPayment}
