@@ -8,6 +8,5 @@ export async function getDefaultEvent(_req: Request, res: Response) {
     return res.status(httpStatus.OK).send(event);
   } catch (error) {
     return res.status(httpStatus.NOT_FOUND).send({});
-    
   }
 }
